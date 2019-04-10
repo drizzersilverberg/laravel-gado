@@ -13,4 +13,5 @@
 
 Route::prefix('excel')->group(function() {
     Route::get('/', 'ExcelController@index');
+    Route::get('/export-users', 'ExcelController@exportUsers');
 });

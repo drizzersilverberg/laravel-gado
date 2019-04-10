@@ -2,9 +2,11 @@
 
 namespace Modules\Excel\Http\Controllers;
 
+use Excel;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Excel\Exports\UsersExport;
 
 class ExcelController extends Controller
 {
@@ -75,5 +77,11 @@ class ExcelController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function exportUsers(Request $request)
+    {
+        /* if the users table is empty, maybe you can generate some users in tinker shell using `factory('App\User', 10)->create();` */
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 }
