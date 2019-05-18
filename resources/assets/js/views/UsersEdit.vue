@@ -64,6 +64,9 @@ export default {
         this.loaded = true;
         this.user = response.data.data;
       }, 5000);
+    })
+    .catch((err) => {
+      this.$router.push({ name: '404' });
     });
   }
 };
