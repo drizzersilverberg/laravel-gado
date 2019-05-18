@@ -37,8 +37,10 @@ export default {
   },
   created() {
     api.find(this.$route.params.id).then((response) => {
-      this.loaded = true;
-      this.user = response.data.data;
+      setTimeout(() => {
+        this.loaded = true;
+        this.user = response.data.data;
+      }, 5000);
     });
   }
 };
