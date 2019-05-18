@@ -25,9 +25,16 @@ class UsersController extends Controller
             'name' => 'required',
             'email' => 'required|email',
         ]);
-    
+
         $user->update($data);
-    
+
         return new UserResource($user);
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return response(null, 204);
     }
 }
