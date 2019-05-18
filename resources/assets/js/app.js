@@ -37,6 +37,11 @@ const router = new VueRouter({
             name: 'users.index',
             component: require('./views/UsersIndex.vue'),
         },
+        {
+            path: '/users/:id/edit',
+            name: 'users.edit',
+            component: require('./views/UsersEdit.vue'),
+        },
     ],
 });
 
@@ -45,6 +50,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('Hello', require('./views/Hello.vue'));
 Vue.component('Home', require('./views/Home.vue'));
 Vue.component('UsersIndex', require('./views/UsersIndex.vue'));
+Vue.component('UsersEdit', require('./views/UsersEdit.vue'));
 Vue.component('app', require('./views/App.vue'));
 
 const app = new Vue({
