@@ -32,6 +32,11 @@ const router = new VueRouter({
             name: 'hello',
             component: require('./views/Hello.vue'),
         },
+        {
+            path: '/users',
+            name: 'users.index',
+            component: require('./views/UsersIndex.vue'),
+        },
     ],
 });
 
@@ -39,6 +44,7 @@ const router = new VueRouter({
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('Hello', require('./views/Hello.vue'));
 Vue.component('Home', require('./views/Home.vue'));
+Vue.component('UsersIndex', require('./views/UsersIndex.vue'));
 Vue.component('app', require('./views/App.vue'));
 
 const app = new Vue({
