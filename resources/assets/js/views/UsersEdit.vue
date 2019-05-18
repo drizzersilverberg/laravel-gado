@@ -1,5 +1,6 @@
 <template>
   <div>
+      <div v-if="message" class="alert">{{ message }}</div>
       <div v-if="! loaded">Loading...</div>
       <form @submit.prevent="onSubmit($event)">
         <div class="form-group">
@@ -11,7 +12,7 @@
             <input id="user_email" type="email" v-model="user.email" />
         </div>
         <div class="form-group">
-            <button type="submit">Update</button>
+            <button type="submit" :disabled="saving">Update</button>
         </div>
     </form>
   </div>
@@ -22,7 +23,9 @@ import api from '../api/users';
 export default {
   data() {
     return {
+      message: null,
       loaded: false,
+      saving: false,
       user: {
         id: null,
         name: "",
@@ -32,7 +35,17 @@ export default {
   },
   methods: {
     onSubmit(event) {
-        // @todo form submit event
+      this.saving = true;
+      api.update(this.user.id, {
+          name: this.user.name,
+          email: this.user.email,
+      }).then((response) => {
+          this.message = 'User updated';
+          setTimeout(() => this.message = null, 2000);
+          this.user = response.data.data;
+      }).catch(error => {
+          console.log(error)
+      }).then(_ => this.saving = false);
     }
   },
   created() {
