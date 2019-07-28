@@ -42,6 +42,14 @@
             onSubmit($event) {
                 this.saving = true
                 this.message = false
+                api.create(this.user)
+                    .then((data) => {
+
+                    })
+                    .catch((e) => {
+                        this.message = e.response.data.message || 'There was an issue creating the user.';
+                    })
+                    .then(() => this.saving = false)
             }
         }
     }
