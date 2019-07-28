@@ -43,8 +43,8 @@
                 this.saving = true
                 this.message = false
                 api.create(this.user)
-                    .then((data) => {
-
+                    .then((response) => {
+                        this.$router.push({ name: 'users.edit', params: { id: response.data.data.id } });
                     })
                     .catch((e) => {
                         this.message = e.response.data.message || 'There was an issue creating the user.';
