@@ -42,6 +42,11 @@ const router = new VueRouter({
             name: 'users.edit',
             component: require('./views/UsersEdit.vue'),
         },
+        {
+            path: '/users/create',
+            name: 'users.create',
+            component: require('./views/UsersCreate.vue'),
+        },
         { path: '/404', name: '404', component: require('./views/NotFound.vue') },
         { path: '*', redirect: '/404' },
     ],
